@@ -12,7 +12,8 @@ TMP_DIR=./tmp
 OUT_DIR=./dist/${DPI}dpi
 FILES=./src/*
 TEMPLATE_FILENAME=template-tarot.svg
-STYLE_FILENAME=style-dark.css
+#STYLE_FILENAME=style-dark.css
+STYLE_FILENAME=style-light.css
 
 FULL_BLEED_W=3
 FULL_BLEED_H=5
@@ -39,6 +40,9 @@ ILLUSTRATION_AREA_SIZE=${ILLUSTRATION_AREA_W_PX}x${ILLUSTRATION_AREA_H_PX}
 
 TEMPLATE_SRC=$RES_DIR/$TEMPLATE_FILENAME
 TEMPLATE_TMP=$TMP_DIR/$TEMPLATE_FILENAME
+
+echo "Cleaning tmp and output"
+rm -rf "$OUT_DIR" "$TMP_DIR"
 
 echo "Creating directories..."
 mkdir -p "$TMP_DIR"
@@ -70,7 +74,11 @@ do
   echo "Name: $NAME"
 
   # resize and crop the source image
-  convert "$INPUT_FILENAME" -resize "$ILLUSTRATION_AREA_SIZE" -gravity Center -crop "$ILLUSTRATION_AREA_SIZE" "$TMP_FILENAME"
+  convert "$INPUT_FILENAME" \
+    -filter box \
+    -resize "$ILLUSTRATION_AREA_SIZE" \
+    -gravity Center \
+    -crop "$ILLUSTRATION_AREA_SIZE" "$TMP_FILENAME"
 
   # render the SVG
   SVG_FILENAME="$BASE_FILENAME.svg"
@@ -90,6 +98,9 @@ do
   echo "Generated $OUTPUT_FILENAME"
   echo ""
 done
+
+# Generate a montage
+montage "$OUT_DIR/*.png" -tile 6x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$OUT_DIR/cover.png"
 
 # restore $IFS
 IFS=$SAVEIFS

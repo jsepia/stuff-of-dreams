@@ -1,5 +1,6 @@
 text {
   font-family: "Crushed";
+  text-transform: lowercase;
   fill: #000;
   opacity: 1;
 }

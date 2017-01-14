@@ -52,14 +52,14 @@
 
           <text
             x="50%" y="360"
-            font-size="240"
+            font-size="180"
             text-anchor="middle">
             {{CARD_NUMBER}}
           </text>
 
           <text
             x="50%" y="3900"
-            font-size="240"
+            font-size="180"
             text-anchor="middle">
             {{CARD_NAME}}
           </text>
