@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const Mustache = require('mustache')
+
+const argv = require('yargs')
+  .usage('Usage: $0 --template <templateFilename> --style <styleFilename> --cardimage <imageFilename> --cardnumber <number> --cardname <name> [--output filename]')
+  .demandOption(['template', 'style', 'cardnumber', 'cardname', 'cardimage'])
+  .describe('template', 'the SVG template to use')
+  .describe('style', 'the CSS file to use')
+  .describe('cardimage', 'the relative path to the card image')
+  .describe('cardnumber', 'the number of the card')
+  .describe('cardname', 'the name of the card')
+  .describe('output', 'destination filename')
+  .help('h')
+  .alias('h', 'help')
+  .argv
+
+const resources = {
+  template: null,
+  style: null
+}
+
+for (let resource in resources) {
+  if (!fs.existsSync(argv[resource])) {
+    console.error(`${resource} not found: ${argv[resource]}`)
+    process.exit(1)
+  }
+
+  console.log(`Reading ${resource} from ${argv[resource]}`)
+  resources[resource] = fs.readFileSync(
+    argv[resource],
+    { encoding: 'utf8' }
+  )
+}
+
+const cardData = {
+  STYLE: resources.style,
+  CARD_NUMBER: argv.cardnumber,
+  CARD_NAME: argv.cardname,
+  CARD_IMAGE: argv.cardimage
+}
+const cardSVG = Mustache.render(resources.template, cardData)
+
+if (argv.output) {
+  fs.writeFileSync(
+    argv.output,
+    cardSVG,
+    { encoding: 'utf8' }
+  )
+}
+else {
+  console.log(cardSVG)
+}

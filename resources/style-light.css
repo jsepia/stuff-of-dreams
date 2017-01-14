@@ -1,0 +1,28 @@
+text {
+  font-family: "Crushed";
+  fill: #000;
+  opacity: 1;
+}
+
+.outer-border,
+.outer-border-edge,
+.inner-background {
+  fill: url(#grunge-texture);
+}
+
+.outer-border {
+  opacity: .5;
+}
+
+.outer-border-edge {
+  opacity: .5;
+}
+
+.inner-border {
+  fill: #000;
+}
+
+.inner-background {
+  opacity: .9;
+  filter: url(#heavyblur);
+}

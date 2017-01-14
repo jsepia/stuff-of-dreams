@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+const CARD_FILENAME_REGEX = /(\d\d) - ([ \w]+)\.png/g
+const toRoman = require('roman-numerals').toRoman
+
+const argv = require('yargs')
+  .usage('Usage: $0 <filename>')
+  .demandCommand(1)
+  .argv
+
+const matches = CARD_FILENAME_REGEX.exec(argv._[0])
+if (!matches) {
+  throw new Error(`The filename must be of the form "00 - The Card.png"; "${argv._[0]}" received`)
+}
+
+const n = parseInt(matches[1])
+
+console.log(n ? toRoman(n) : 0)

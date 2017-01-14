@@ -1,0 +1,129 @@
+<svg width="2.99in" height="4.99in" viewBox="0 0 2990 4990"
+     xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect fill="#000"
+    x="0" y="0"
+    width="100%" height="100%" />
+  <svg
+    id="cut-area"
+    x="120" y="120"
+    width="2750" height="4750">
+
+    <svg
+      id="safe-area"
+      x="120" y="120"
+      width="2510" height="4510">
+
+      <rect
+        class="outer-border"
+        x="0" y="0"
+        width="100%" height="100%"
+        rx="200" ry="200" />
+
+      <rect
+        class="outer-border-edge"
+        x="100" y="100"
+        width="2310" height="4310"
+        rx="135" ry="135" />
+      
+      <svg
+        id="inner-area"
+        x="130" y="130"
+        width="2250" height="4250">
+
+        <rect
+          class="inner-border"
+          x="0" y="0"
+          width="100%" height="100%"
+          rx="125" ry="125"
+          />
+
+        <svg
+          id="content-area"
+          x="75" y="75"
+          width="2100" height="4100">
+
+          <rect
+            class="inner-background"
+            x="0" y="0"
+            width="100%" height="100%"
+            rx="75" ry="75"
+            />
+
+          <text
+            x="50%" y="360"
+            font-size="240"
+            text-anchor="middle">
+            {{CARD_NUMBER}}
+          </text>
+
+          <text
+            x="50%" y="3900"
+            font-size="240"
+            text-anchor="middle">
+            {{CARD_NAME}}
+          </text>
+
+          <svg
+            id="footer-area"
+            x="0" y="1000"
+            width="2500" height="500">
+          </svg><!-- /#footer-area -->
+
+        </svg><!-- /#content-area -->
+      </svg><!-- /#inner-area -->
+
+      <svg
+        id="image-area"
+        x="0" y="500"
+        width="2500" height="3500">
+
+        <g transform="translate(1250, 1750) scale(0.84)">
+
+          <g transform="translate(-1250, -1750)">
+
+            <rect fill="#000"
+              x="0%" y="0%"
+              width="100%" height="100%"
+              stroke="#000" stroke-width="50"
+              />
+
+            <svg
+              id="image-container"
+              x="0%" y="0%"
+              width="100%" height="100%">
+              <image xlink:href="{{CARD_IMAGE}}"
+                x="0%" y="0%"
+                width="100%" height="100%" />
+            </svg>
+          
+          </g>
+        </g>
+      </svg><!-- /#image-area -->
+
+    </svg>
+  </svg>
+
+  <defs>
+    <pattern id="grunge-texture"
+      patternUnits="userSpaceOnUse"
+      width="3200" height="2187"
+      viewBox="1200 400 990 1490">
+      <image xlink:href="fg-light-grunge-texture-3.jpg"
+        x="0" y="0"
+        width="3200" height="2187" />
+    </pattern>
+    <filter id="lightblur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+    <filter id="mediumblur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+    <filter id="heavyblur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="9" />
+    </filter>
+    <style type="text/css"><![CDATA[
+      {{{STYLE}}}
+    ]]></style>
+  </defs>
+</svg>
