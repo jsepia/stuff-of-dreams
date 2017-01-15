@@ -6,11 +6,12 @@ DPI=$1
 # SETTINGS
 #
 
-IN_DIR=./src
-RES_DIR=./resources
-TMP_DIR=./tmp
-OUT_DIR=./dist/${DPI}dpi
-FILES=./src/*
+CWD=`pwd`
+IN_DIR=$CWD/src
+RES_DIR=$CWD/resources
+TMP_DIR=$CWD/tmp
+OUT_DIR=$CWD/dist/${DPI}dpi
+FILES=$CWD/src/*
 TEMPLATE_FILENAME=template-tarot.svg
 #STYLE_FILENAME=style-dark.css
 STYLE_FILENAME=style-light.css
@@ -43,7 +44,10 @@ ILLUSTRATION_AREA_SIZE=${ILLUSTRATION_AREA_W_PX}x${ILLUSTRATION_AREA_H_PX}
 
 TEMPLATE_SRC=$RES_DIR/$TEMPLATE_FILENAME
 TEMPLATE_TMP=$TMP_DIR/$TEMPLATE_FILENAME
-COVER_FILENAME="$OUT_DIR/cover.png"
+COVER_FILENAME="$OUT_DIR"/stuff-of-dreams-tarot-"$DPI"dpi-cover.png
+BUNDLE_FILENAME=stuff-of-dreams-tarot-"$DPI"dpi.zip
+BUNDLE_TMP_FILENAME="$TMP_DIR"/"$BUNDLE_FILENAME"
+BUNDLE_OUT_FILENAME="$OUT_DIR"/"$BUNDLE_FILENAME"
 
 echo "Cleaning tmp and output"
 rm -rf "$OUT_DIR" "$TMP_DIR"
@@ -113,6 +117,13 @@ done
 # Generate a montage
 montage "$OUT_DIR/*.png" -tile 6x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
 echo "Generated $COVER_FILENAME"
+
+# Generate a bundle
+cd "$OUT_DIR"
+bestzip "$BUNDLE_TMP_FILENAME" ./
+cd "$CWD"
+mv "$BUNDLE_TMP_FILENAME" "$BUNDLE_OUT_FILENAME"
+echo "Generated $BUNDLE_FILENAME"
 
 # restore $IFS
 IFS=$SAVEIFS
