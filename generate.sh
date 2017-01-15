@@ -40,6 +40,7 @@ ILLUSTRATION_AREA_SIZE=${ILLUSTRATION_AREA_W_PX}x${ILLUSTRATION_AREA_H_PX}
 
 TEMPLATE_SRC=$RES_DIR/$TEMPLATE_FILENAME
 TEMPLATE_TMP=$TMP_DIR/$TEMPLATE_FILENAME
+COVER_FILENAME="$OUT_DIR/cover.png"
 
 echo "Cleaning tmp and output"
 rm -rf "$OUT_DIR" "$TMP_DIR"
@@ -100,7 +101,8 @@ do
 done
 
 # Generate a montage
-montage "$OUT_DIR/*.png" -tile 6x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$OUT_DIR/cover.png"
+montage "$OUT_DIR/*.png" -tile 6x1 -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
+echo "Generated $COVER_FILENAME"
 
 # restore $IFS
 IFS=$SAVEIFS
