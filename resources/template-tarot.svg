@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="2.99in" height="4.99in" viewBox="0 0 2990 4990"
      xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -101,18 +102,10 @@
         </g>
       </svg><!-- /#image-area -->
 
-    </svg>
-  </svg>
+    </svg><!-- /#safe-area -->
+  </svg><!-- /#cut-area -->
 
   <defs>
-    <pattern id="grunge-texture"
-      patternUnits="userSpaceOnUse"
-      width="3200" height="2187"
-      viewBox="1200 400 990 1490">
-      <image xlink:href="fg-light-grunge-texture-3.jpg"
-        x="0" y="0"
-        width="3200" height="2187" />
-    </pattern>
     <filter id="lightblur">
         <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
     </filter>
@@ -121,7 +114,28 @@
     </filter>
     <filter id="heavyblur">
         <feGaussianBlur in="SourceGraphic" stdDeviation="9" />
+        <feTurbulence type="turbulence" baseFrequency="0.05"
+          numOctaves="2" result="turbulence"/>
+        <feDisplacementMap in2="turbulence" in="SourceGraphic"
+            scale="9" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
+    <pattern id="grunge-texture"
+      patternUnits="userSpaceOnUse"
+      width="3200" height="2187"
+      viewBox="1200 400 990 1490">
+      <image xlink:href="fg-light-grunge-texture-3.jpg"
+        x="0" y="0"
+        width="3200" height="2187" />
+    </pattern>
+    <pattern id="grunge-texture-blurry"
+      patternUnits="userSpaceOnUse"
+      width="3200" height="2187"
+      viewBox="1200 400 990 1490"
+      filter="url(#heavyblur)">
+      <image xlink:href="fg-light-grunge-texture-3.jpg"
+        x="0" y="0"
+        width="3200" height="2187" />
+    </pattern>
     <style type="text/css"><![CDATA[
       {{{STYLE}}}
     ]]></style>

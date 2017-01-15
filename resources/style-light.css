@@ -6,9 +6,12 @@ text {
 }
 
 .outer-border,
-.outer-border-edge,
-.inner-background {
+.outer-border-edge {
   fill: url(#grunge-texture);
+}
+
+.inner-background {
+  fill: url(#grunge-texture-blurry);
 }
 
 .outer-border {
