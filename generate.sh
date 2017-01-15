@@ -79,6 +79,7 @@ do
 
   # resize and crop the source image
   convert "$INPUT_FILENAME" \
+    -type Grayscale \
     -filter box \
     -resize "$ILLUSTRATION_AREA_SIZE" \
     -gravity Center \

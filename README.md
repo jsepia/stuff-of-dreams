@@ -40,7 +40,7 @@ npm run build:low     # 72dpi
 
 ## TODO
 
-* Desaturate the image sources to hide any blue stains from dried whiteout
+* ~~Desaturate the image sources to hide any blue stains from dried white~~
 * Add a subtle burgundy color overlay
 * Make the template look more handmade and painterly
 * Rescan the drawings in at least 300dpi for print
