@@ -30,6 +30,9 @@ ILLUSTRATION_AREA_H=4.51
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
+FULL_BLEED_DEFAULT_W_PX="`echo "$FULL_BLEED_W * 72" | bc`"
+FULL_BLEED_DEFAULT_H_PX="`echo "$FULL_BLEED_H * 72" | bc`"
+
 FULL_BLEED_W_PX=`echo "$FULL_BLEED_W * $DPI" | bc`
 FULL_BLEED_H_PX=`echo "$FULL_BLEED_H * $DPI" | bc`
 ILLUSTRATION_AREA_W_PX=`echo "$ILLUSTRATION_AREA_W * $DPI" | bc`
@@ -93,7 +96,13 @@ do
   
   # convert it to PNG
   echo "Converting $TMP_DIR/$SVG_FILENAME to $OUTPUT_FILENAME"
-  svg2png "$TMP_DIR/$SVG_FILENAME" --output="$OUTPUT_FILENAME" --width $FULL_BLEED_W_PX --height $FULL_BLEED_H_PX
+  INPUT_SIZE="$FULL_BLEED_DEFAULT_W_PX":"$FULL_BLEED_DEFAULT_H_PX"
+  OUTPUT_SIZE="$FULL_BLEED_W_PX":"$FULL_BLEED_H_PX"
+  svg2png \
+    "$TMP_DIR/$SVG_FILENAME" \
+    --output "$OUTPUT_FILENAME" \
+    --width="$FULL_BLEED_W_PX" \
+    --height="$FULL_BLEED_H_PX"
   
   # done
   echo "Generated $OUTPUT_FILENAME"
@@ -101,7 +110,7 @@ do
 done
 
 # Generate a montage
-montage "$OUT_DIR/*.png" -tile 6x1 -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
+montage "$OUT_DIR/*.png" -tile 6x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
 echo "Generated $COVER_FILENAME"
 
 # restore $IFS
