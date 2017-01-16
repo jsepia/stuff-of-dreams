@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "6"
+  - "4"
+  - "4.4.7"
+  - "4.1.1"
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y bc
+script:
+  - npm run build:low
+  - npm run build:medium
+  - npm run build:high
+deploy:
+  provider: releases
+  api_key:
+    secure: ZQV1U1GeScP3Yco2hFKpgkeTSi7vp8YrnN+v3+aEvdQZTuVjKbIeg6lvSs+wX/4WoN4g6wPFeQS9CsyEBftq9uP8OS4T3pBKqV/u1iRu3LEEx4bxH1htesG6ImO5JmW40STlYJnDH3bA994nnOexOhyVRqLA4g13jiQeeyVa1HicF/9smXD0fD27ocE+cWEkv7NEoEdTmrHIkb5aJzDbIUoFOJoGLfjh3DqVfxFtpILvuntsU4K2Rx+xix2rWG79Ii3sV/814O5Ir7ciWpw13hjA3jGzBANbbsgyGJ8SIwNtVS9ydqmC0SMtwiWi2CVajiCQabZLJ9zCm8jdJvW9yHrQ7O4j6wUUW1LbPU+9PFjr1wxcvdI/jcAFI1EaVvDtZCjgZWQmnO8pYTZ3FCIcthZ7rbKuEVpRBfhWbR5KKSGexzyehfYq91h7w6qSHGgw0Jr14XjljGhHzshfNI2B6cBMHc8DQUow7Tn8ybM9ZmUqyzxYmO3ztAfv8Iu0gHFw+Xm5JYu0wncQi2J/mqL0zqxMTRW7YMBYsdDFGO2eyo2rvjsQaeLpl5YDk+sA+toUQpt4aTjvXmGF6tn3VSB4+olT2GJpi8W8YeyFhG/MlZ/E36eeQ8ewt6Yu1eHeoFbz7nbx6Zvj3KTucA09gsojx60LfsyJiZ9xcN4Z/hxdXXk=
+  file:
+    - dist/72dpi/stuff-of-dreams-tarot-72dpi-cover.png
+    - dist/144dpi/stuff-of-dreams-tarot-72dpi-cover.png
+    - dist/300dpi/stuff-of-dreams-tarot-72dpi-cover.png
+    - dist/72dpi/stuff-of-dreams-tarot-72dpi.zip
+    - dist/144dpi/stuff-of-dreams-tarot-144dpi.zip
+    - dist/300dpi/stuff-of-dreams-tarot-300dpi.zip
+  on:
+    repo: jsepia/stuff-of-dreams

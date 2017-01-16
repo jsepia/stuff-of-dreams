@@ -45,5 +45,6 @@ npm run build:low     # 72dpi
 * Make the template look more handmade and painterly
 * Rescan the drawings in at least 300dpi for print
 * Clean up the drawings in photoshop
+* Remove the dependency on `bc`
 * [BONUS GOAL] Minor arcana!
 * [BONUS GOAL] Full color!
