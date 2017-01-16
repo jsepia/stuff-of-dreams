@@ -30,4 +30,4 @@ deploy:
     - dist/144dpi/stuff-of-dreams-tarot-144dpi.zip
     - dist/300dpi/stuff-of-dreams-tarot-300dpi.zip
   on:
-    repo: jsepia/stuff-of-dreams
+    tags: true
