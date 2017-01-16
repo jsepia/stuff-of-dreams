@@ -11,6 +11,13 @@ script:
   - npm run build:low
   - npm run build:medium
   - npm run build:high
+before_deploy:
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  - git push -q https://$TAGPERM@github.com/jsepia/stuff-of-dreams --tags
+  - ls -R
 deploy:
   provider: releases
   api_key:
