@@ -5,11 +5,7 @@
   "main": "build.js",
   "scripts": {
     "clean": "rimraf dist/* tmp/*",
-    "build": "npm run build:high",
-    "build:high": "./generate.sh 300",
-    "build:medium": "./generate.sh 72",
-    "build:low": "./generate.sh 36",
-    "test": "./test.sh"
+    "build": "./generate.sh"
   },
   "repository": {
     "type": "git",
