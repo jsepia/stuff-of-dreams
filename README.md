@@ -46,5 +46,6 @@ npm run build:low     # 72dpi
 * Rescan the drawings in at least 300dpi for print
 * Clean up the drawings in photoshop
 * Remove the dependency on `bc`
+* Add the Crushed webfont to the repo
 * [BONUS GOAL] Minor arcana!
 * [BONUS GOAL] Full color!

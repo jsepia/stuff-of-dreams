@@ -62,6 +62,20 @@ cp -r "$RES_DIR"/* "$TMP_DIR/"
 echo "Rendering at ${DPI}dpi (${FULL_BLEED_W_PX}x${FULL_BLEED_H_PX})..."
 echo ""
 
+# Do the back
+bin/generatecardsvg \
+  --template "$RES_DIR/template-back.svg" \
+  --style "$RES_DIR/$STYLE_FILENAME" \
+  --cardnumber "999" \
+  --cardname "The Back" \
+  --cardimage "dummy.png" \
+  --output "$TMP_DIR/Back.svg"
+svg2png \
+  "$TMP_DIR/Back.svg" \
+  --output "$OUT_DIR/Back.png" \
+  --width="$FULL_BLEED_W_PX" \
+  --height="$FULL_BLEED_H_PX"
+
 for INPUT_FILENAME in $FILES
 do
   # establish the base filename and metadata

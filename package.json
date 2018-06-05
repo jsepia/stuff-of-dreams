@@ -1,11 +1,14 @@
 {
-  "name": "stuff-of-dreams",
+  "name": "@jsepia/stuff-of-dreams",
   "version": "1.0.0",
   "description": "A surreal tarot deck",
   "main": "build.js",
   "scripts": {
     "clean": "rimraf dist/* tmp/*",
-    "build": "./generate.sh"
+    "build": "./generate.sh 300",
+    "build:144": "./generate.sh 144",
+    "build:72": "./generate.sh 72",
+    "fastbuild": "./generate.sh 36"
   },
   "repository": {
     "type": "git",

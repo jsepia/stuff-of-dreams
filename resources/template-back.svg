@@ -55,20 +55,6 @@
             rx="75" ry="75"
             />
 
-          <text
-            x="50%" y="360"
-            font-size="180"
-            text-anchor="middle">
-            {{CARD_NUMBER}}
-          </text>
-
-          <text
-            x="50%" y="3900"
-            font-size="180"
-            text-anchor="middle">
-            {{CARD_NAME}}
-          </text>
-
           <svg
             id="footer-area"
             x="0" y="1000"
@@ -80,30 +66,28 @@
 
       <svg
         id="image-area"
-        x="0" y="500"
-        width="2500" height="3500">
+        x="0" y="0"
+        width="2500" height="4500">
 
-        <g transform="translate(1250, 1750) scale(0.84)">
-
-          <g transform="translate(-1250, -1750)">
-
-            <rect fill="#000"
-              x="0%" y="0%"
-              width="100%" height="100%"
-              stroke="#000" stroke-width="50"
-              />
-
-            <svg
-              id="image-container"
-              x="0%" y="0%"
-              width="100%" height="100%">
-              <image xlink:href="{{CARD_IMAGE}}"
-                x="0%" y="0%"
-                width="100%" height="100%" />
-            </svg>
+        <svg
+          id="image-container"
+          x="0%" y="0%"
+          width="100%" height="100%">
+          <image
+            class="multiply"
+            xlink:href="back-symbol.svg"
+            x="0%" y="0%"
+            width="100%" height="100%"
+          />
+          <image
+            class="hard-light"
+            xlink:href="back-symbol.svg"
+            x="0%" y="0%"
+            width="100%" height="100%"
+            opacity="0.5"
+          />
+        </svg>
           
-          </g>
-        </g>
       </svg><!-- /#image-area -->
 
     </svg><!-- /#safe-area -->
@@ -142,6 +126,12 @@
     </pattern>
     <style type="text/css"><![CDATA[
       {{{STYLE}}}
+      .multiply {
+        mix-blend-mode: multiply;
+      }
+      .hard-light {
+        mix-blend-mode: hard-light;
+      }
     ]]></style>
   </defs>
 </svg>
