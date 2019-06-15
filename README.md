@@ -6,11 +6,15 @@
 
 [![Completion progress](http://progressed.io/bar/32)](juliosepia.com/posts/stuff-of-dreams-tarot.html)
 <br />
-**7/22** Major Arcana completed
+**8/22** Major Arcana completed
 
 This contains the cards for my tarot set as well as a script that converts them into print-ready assets. Even though I plan on selling my tarot deck through a print-on-demand site, I've decided to release all the assets and scripts to the public domain free of charge, so that you may use them and modify them as you wish. You can even print your own copy.
 
 ## The script
+
+### Prerequisites
+
+* ImageMagick
 
 ### Installation
 

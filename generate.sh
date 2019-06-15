@@ -15,6 +15,8 @@ FILES=$CWD/src/*
 TEMPLATE_FILENAME=template-tarot.svg
 #STYLE_FILENAME=style-dark.css
 STYLE_FILENAME=style-light.css
+TYPE=Grayscale
+# TYPE=Undefined
 
 FULL_BLEED_W=3
 FULL_BLEED_H=5
@@ -30,6 +32,9 @@ ILLUSTRATION_AREA_H=4.51
 # support filenames with spaces
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
+
+# GM/IM abstraction layer
+CONVERT=convert
 
 FULL_BLEED_DEFAULT_W_PX="`echo "$FULL_BLEED_W * 72" | bc`"
 FULL_BLEED_DEFAULT_H_PX="`echo "$FULL_BLEED_H * 72" | bc`"
@@ -82,8 +87,9 @@ do
   echo "Name: $NAME"
 
   # resize and crop the source image
-  convert "$INPUT_FILENAME" \
-    -type Grayscale \
+  echo "$INPUT_FILENAME -> $TMP_FILENAME"
+  $CONVERT "$INPUT_FILENAME" \
+    -type $TYPE \
     -filter box \
     -resize "$ILLUSTRATION_AREA_SIZE" \
     -gravity Center \
