@@ -121,7 +121,7 @@ do
 done
 
 # Generate a montage
-montage "$OUT_DIR/*.png" -tile 6x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
+montage "$OUT_DIR/*.png" -tile 4x -geometry "$FULL_BLEED_W_PX"x"$FULL_BLEED_H_PX" -background black "$COVER_FILENAME"
 echo "Generated $COVER_FILENAME"
 
 # Generate a bundle

@@ -15,6 +15,7 @@ This contains the cards for my tarot set as well as a script that converts them 
 ### Prerequisites
 
 * ImageMagick
+* [Crushed](https://github.com/google/fonts/blob/master/apache/crushed/Crushed-Regular.ttf)
 
 ### Installation
 
